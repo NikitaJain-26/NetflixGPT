@@ -7,6 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { BACKGROUND_IMAGE } from "../utils/constant";
 const Login = () => {
   const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
@@ -70,10 +71,7 @@ const Login = () => {
 
   return (
     <div className="">
-      <img
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/893a42ad-6a39-43c2-bbc1-a951ec64ed6d/1d86e0ac-428c-4dfa-9810-5251dbf446f8/IN-en-20231002-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-        alt="backgrund"
-      />
+      <img src={BACKGROUND_IMAGE} alt="backgrund" />
       <div className="bg-black absolute top-40 left-32 w-4/12 mx-60 bg-opacity-80 rounded-sm p-4 mb-4">
         <form onSubmit={(e) => e.preventDefault()}>
           <h3 className="text-white text-2xl p-3 font-bold">Sign In</h3>

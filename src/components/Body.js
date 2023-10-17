@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/redux/userSlice";
+
 const Body = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Body = () => {
       if (user) {
         const { uid, displayName, email } = user;
         dispatch(addUser({ displayName: displayName, email: email, uid: uid }));
+        navigate("/browse");
       } else {
         dispatch(removeUser());
         navigate("/");

@@ -1,7 +1,13 @@
-import React from "react";
+import useGetMovies from "../utils/hooks/useGetMovies";
+import MainContainer from "./MainContainer";
 
 const Browse = () => {
-  return <div className="bg-black text-white">Home</div>;
+  useGetMovies();
+  return (
+    <div className="bg-black text-white">
+      <MainContainer />
+    </div>
+  );
 };
 
 export default Browse;
