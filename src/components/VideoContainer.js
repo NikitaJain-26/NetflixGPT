@@ -4,7 +4,6 @@ import useGetMovieTrailor from "../utils/hooks/useGetMovieTrailor";
 const VideoContainer = ({ movieId }) => {
   useGetMovieTrailor(movieId);
   const trailorKey = useSelector((store) => store.movie?.trailorKey);
-  console.log(trailorKey);
   return (
     <div className="w-full aspect-video">
       <iframe

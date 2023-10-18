@@ -1,11 +1,19 @@
-import useGetMovies from "../utils/hooks/useGetMovies";
+import useGetNowPlayingMovies from "../utils/hooks/useGetNowPlayingMovies";
+import useGetPopularMovies from "../utils/hooks/useGetPopularMovies";
+import useGetTopRatedMovies from "../utils/hooks/useGetTopRatedMovies";
+import useGetUpcomingMovies from "../utils/hooks/useGetUpcomingMovies";
 import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
-  useGetMovies();
+  useGetNowPlayingMovies();
+  useGetPopularMovies();
+  useGetUpcomingMovies();
+  useGetTopRatedMovies();
   return (
-    <div className="bg-black text-white">
+    <div className="">
       <MainContainer />
+      <SecondaryContainer />
     </div>
   );
 };
