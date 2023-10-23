@@ -1,16 +1,39 @@
 import { useRef } from "react";
-import { BACKGROUND_IMAGE } from "../utils/constant";
+import {
+  API_OPTION,
+  BACKGROUND_IMAGE,
+  SEARCH_MOVIE_API,
+} from "../utils/constant";
+import { openai } from "../utils/openAi";
+import { useDispatch } from "react-redux";
+import { addMovieResult } from "../utils/redux/gptSlice";
+import { getMovieDetails } from "../utils/getMovieDetails";
 
 const GPTSearchBar = () => {
   const searchText = useRef(null);
-  const handleSearchClick = () => {
-    
+  const dispatch = useDispatch();
+  const handleSearchClick = async () => {
+    const query =
+      "Act as Movie recommendation system and suggest some movies for the query : " +
+      searchText.current.value +
+      "only give me names of 5 movies, comma seperated. like the example resukt ahead. Example Result: Gadar, Fukrey, Golmaal, Hera pheri, OMG";
+    const chatCompletion = await openai.chat.completions.create({
+      messages: [{ role: "user", content: query }],
+      model: "gpt-3.5-turbo",
+    });
+    const searchResult = chatCompletion.choices[0]?.message?.content.split(",");
+    const promiseArray = searchResult.map((movie) => getMovieDetails(movie));
+    const tmbdResult = await Promise.all(promiseArray);
+    dispatch(
+      addMovieResult({ movieNames: searchResult, movieList: tmbdResult })
+    );
   };
+
   return (
     <div className="">
       <img
         src={BACKGROUND_IMAGE}
-        className="absolute -z-10 -mt-8"
+        className="fixed -z-10 -mt-8"
         alt="background image"
       />
       <form
