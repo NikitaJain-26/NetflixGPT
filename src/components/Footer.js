@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="bg-black text-gray-400 p-4">
+    <div className="bg-black text-gray-400 p-4 fixed bottom-0">
       <p className="mb-4 w-9/12 mx-auto">Question? Call </p>
       <p className="mb-4 w-9/12 mx-auto">
         <a href="tel:000-800-919-1694">000-800-919-1694</a>

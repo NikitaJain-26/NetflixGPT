@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { API_OPTION } from "../constant";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTrailorKey } from "../redux/moviesSlice";
 
 const useGetMovieTrailor = (movieId) => {
   const dispatch = useDispatch();
+
+  const movieTrailorKey = useSelector((store) => store?.movie?.trailorKey);
   useEffect(() => {
-    getTrailor();
+    !movieTrailorKey && getTrailor();
   }, []);
 
   const getTrailor = async () => {

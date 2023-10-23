@@ -1,14 +1,20 @@
 import { signOut } from "firebase/auth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../utils/firebase";
 import { Link } from "react-router-dom";
 import { USER_AVATAR } from "../utils/constant";
+import { toggleGptSearch } from "../utils/redux/gptSlice";
 const Header = () => {
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const onSignOutClick = () => {
     signOut(auth)
       .then(() => {})
       .catch((error) => {});
+  };
+  const isGptSearch = useSelector((store) => store.gptSearch?.gptSearch);
+  const handleToggleGptSearch = () => {
+    dispatch(toggleGptSearch());
   };
   return (
     <>
@@ -21,18 +27,12 @@ const Header = () => {
             </Link>
           ) : (
             <div className="flex">
-              <Link to="/browse" className="text-white mr-6 mt-4">
-                Home
-              </Link>
-              <Link to="/" className="text-white mr-6 mt-4">
-                TV Shows
-              </Link>
-              <Link to="/" className="text-white mr-6 mt-4">
-                Movies
-              </Link>
-              <Link to="/" className="text-white mr-6 mt-4">
-                New & Popular
-              </Link>
+              <button
+                className="px-4 py-2 mr-6 mt-3 mb-5 text-white bg-red-800 rounded-md"
+                onClick={handleToggleGptSearch}
+              >
+                {isGptSearch ? "Home Page" : "GPT Search"}
+              </button>
               <img className="w-12 h-12 m-2 p-2" src={USER_AVATAR} alt="logo" />
               <button
                 className="text-white mr-4 mt-0"
