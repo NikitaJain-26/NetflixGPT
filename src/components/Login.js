@@ -73,7 +73,7 @@ const Login = () => {
 
   return (
     <div className="">
-      <img src={BACKGROUND_IMAGE} alt="backgrund" />
+      <img src={BACKGROUND_IMAGE} alt="backgrund" className="w-screen" />
       <div className="bg-black absolute top-40 left-32 w-4/12 mx-60 bg-opacity-80 rounded-sm p-4 mb-4">
         <form onSubmit={(e) => e.preventDefault()}>
           <h3 className="text-white text-2xl p-3 font-bold">

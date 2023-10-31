@@ -25,12 +25,16 @@ const Header = () => {
   };
   return (
     <>
-      <h1 className="w-full sticky top-0 bg-black `bg-gradient-to-b from-black flex justify-between ">
-        <img src="/Netflix_Logo_PMS.png" alt="logo" className="w-40" />
-        <div className="flex">
+      <h1 className="w-full md:sticky md:top-0 bg-black `bg-gradient-to-b from-black flex flex-col justify-center mx-auto md:flex-row md:justify-between ">
+        <img
+          src="/Netflix_Logo_PMS.png"
+          alt="logo"
+          className="w-40 ml-[25%] md:ml-0"
+        />
+        <div className="flex justify-center">
           <select
             onChange={(e) => onlanguagechange(e)}
-            className="px-4 py-2 mr-6 mt-3 mb-5 text-white bg-red-800 rounded-md"
+            className="md:px-4 md:py-2 mr-6 md:mt-3 md:mb-5 my-7 px-1 text-white bg-red-800 rounded-md"
           >
             {languageOption.map((lang) => (
               <option value={lang.value}>{lang.title}</option>
@@ -43,14 +47,18 @@ const Header = () => {
           ) : (
             <div className="flex">
               <button
-                className="px-4 py-2 mr-6 mt-3 mb-5 text-white bg-red-800 rounded-md"
+                className="md:px-4 md:py-2 mr-6 md:mt-3 md:mb-5 my-7 px-1 text-white bg-red-800 rounded-md"
                 onClick={handleToggleGptSearch}
               >
                 {isGptSearch
                   ? langConstant[lang].homePageLabel
                   : langConstant[lang].gptSearch}
               </button>
-              <img className="w-12 h-12 m-2 p-2" src={USER_AVATAR} alt="logo" />
+              <img
+                className="hidden md:inline-block w-12 h-12 m-2 p-2"
+                src={USER_AVATAR}
+                alt="logo"
+              />
               <button
                 className="text-white mr-4 mt-0"
                 onClick={() => onSignOutClick()}

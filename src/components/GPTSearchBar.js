@@ -36,12 +36,12 @@ const GPTSearchBar = () => {
       />
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-5/12 bg-black mx-auto bg-opacity-80 mt-8 pl-2"
+        className="w-full md:w-5/12 bg-black md:mx-auto bg-opacity-80 md:mt-8 mb-4 pl-1 md:pl-2"
       >
         <input
           ref={searchText}
           type="search"
-          className="px-2 py-1 mx-4 w-8/12 rounded-md"
+          className="px-2 py-1 mx-4 md:w-8/12 rounded-md"
           placeholder={langConstant[lang].searchPlaceHolder}
         />
         <button

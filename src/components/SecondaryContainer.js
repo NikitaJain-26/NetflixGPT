@@ -12,7 +12,7 @@ const SecondaryContainer = () => {
   const upcomingMovies = useSelector((store) => store?.movie?.upcomingMovies);
   return (
     <div className="bg-black">
-      <div className="-mt-60">
+      <div className="md:-mt-60">
         {nowPlayingMovies && (
           <MovieList
             title={langConstant[lang].nowPlaying}
