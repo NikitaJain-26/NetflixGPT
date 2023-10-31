@@ -8,8 +8,7 @@ export const API_OPTION = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOWE1YjMxNmY0MzVkZDUwNWVkMTMyMzhkM2YxNjJhMSIsInN1YiI6IjY1MjkxYjZiMWYzZTYwMDBmZjg0ZjU4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pBYTx2XyAxgtasKkjHOMG_Mpg2JP2LijZVNNluV3PHE",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
@@ -29,4 +28,4 @@ export const SEARCH_MOVIE_API =
   "https://api.themoviedb.org/3/search/movie?query=";
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
-export const OPENAIKEY = "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";
+export const OPENAIKEY = process.env.REACT_APP_OPENAPI_KEY;
