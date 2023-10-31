@@ -29,3 +29,8 @@ export const SEARCH_MOVIE_API =
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
 export const OPENAIKEY = process.env.REACT_APP_OPENAPI_KEY;
+
+export const gptQuery =
+  "Act as Movie recommendation system and suggest some movies for the query : ";
+export const gptExample =
+  "only give me names of 5 movies, comma seperated. like the example resukt ahead. Example Result: Gadar, Fukrey, Golmaal, Hera pheri, OMG";

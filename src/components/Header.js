@@ -4,8 +4,11 @@ import { auth } from "../utils/firebase";
 import { Link } from "react-router-dom";
 import { USER_AVATAR } from "../utils/constant";
 import { toggleGptSearch } from "../utils/redux/gptSlice";
+import { langConstant, languageOption } from "../utils/strings";
+import { updateLanguage } from "../utils/redux/configSlice";
 const Header = () => {
   const dispatch = useDispatch();
+  const lang = useSelector((store) => store.config.lang);
   const user = useSelector((store) => store.user);
   const onSignOutClick = () => {
     signOut(auth)
@@ -16,14 +19,26 @@ const Header = () => {
   const handleToggleGptSearch = () => {
     dispatch(toggleGptSearch());
   };
+
+  const onlanguagechange = (e) => {
+    dispatch(updateLanguage(e.target.value));
+  };
   return (
     <>
       <h1 className="w-full sticky top-0 bg-black `bg-gradient-to-b from-black flex justify-between ">
         <img src="/Netflix_Logo_PMS.png" alt="logo" className="w-40" />
         <div className="flex">
+          <select
+            onChange={(e) => onlanguagechange(e)}
+            className="px-4 py-2 mr-6 mt-3 mb-5 text-white bg-red-800 rounded-md"
+          >
+            {languageOption.map((lang) => (
+              <option value={lang.value}>{lang.title}</option>
+            ))}
+          </select>
           {user == null ? (
             <Link to="/" className="text-white font-bold mr-6 mt-4">
-              Sign In
+              {langConstant[lang].signInLabel}
             </Link>
           ) : (
             <div className="flex">
@@ -31,14 +46,16 @@ const Header = () => {
                 className="px-4 py-2 mr-6 mt-3 mb-5 text-white bg-red-800 rounded-md"
                 onClick={handleToggleGptSearch}
               >
-                {isGptSearch ? "Home Page" : "GPT Search"}
+                {isGptSearch
+                  ? langConstant[lang].homePageLabel
+                  : langConstant[lang].gptSearch}
               </button>
               <img className="w-12 h-12 m-2 p-2" src={USER_AVATAR} alt="logo" />
               <button
                 className="text-white mr-4 mt-0"
                 onClick={() => onSignOutClick()}
               >
-                Sign Out
+                {langConstant[lang].signOutLabel}
               </button>
             </div>
           )}
