@@ -25,23 +25,19 @@ const Header = () => {
   };
   return (
     <>
-      <h1 className="w-full md:sticky md:top-0 bg-black `bg-gradient-to-b from-black flex flex-col justify-center mx-auto md:flex-row md:justify-between ">
-        <img
-          src="/Netflix_Logo_PMS.png"
-          alt="logo"
-          className="w-40 ml-[25%] md:ml-0"
-        />
+      <h1 className="w-full md:sticky md:top-0 bg-black `bg-gradient-to-b from-black flex mx-auto md:flex-row justify-between ">
+        <img src="/Netflix_Logo_PMS.png" alt="logo" className="w-40" />
         <div className="flex justify-center">
           <select
             onChange={(e) => onlanguagechange(e)}
-            className="md:px-4 md:py-2 mr-6 md:mt-3 md:mb-5 my-7 px-1 text-white bg-red-800 rounded-md"
+            className="md:px-4 md:py-2 mr-6 md:mt-3 md:mb-5 my-6 px-2 py-1 text-white bg-red-800 rounded-md"
           >
             {languageOption.map((lang) => (
               <option value={lang.value}>{lang.title}</option>
             ))}
           </select>
           {user == null ? (
-            <Link to="/" className="text-white font-bold mr-6 mt-4">
+            <Link to="/" className="text-white font-bold mr-6 mt-6">
               {langConstant[lang].signInLabel}
             </Link>
           ) : (

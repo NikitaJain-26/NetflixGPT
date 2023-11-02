@@ -31,12 +31,12 @@ const GPTSearchBar = () => {
     <div className="">
       <img
         src={BACKGROUND_IMAGE}
-        className="fixed -z-10 -mt-8"
+        className="fixed -z-10 -mt-8 h-screen object-cover md:h-auto"
         alt="background image"
       />
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-full md:w-5/12 bg-black md:mx-auto bg-opacity-80 md:mt-8 mb-4 pl-1 md:pl-2"
+        className="w-full md:w-5/12 bg-black md:mx-auto mt-2 bg-opacity-80 md:mt-8 mb-4 pl-1 md:pl-2"
       >
         <input
           ref={searchText}
