@@ -11,6 +11,7 @@ const MovieList = ({ title, movies }) => {
               movie?.poster_path && (
                 <MovieCard
                   key={movie.id}
+                  id={movie.id}
                   title={movie?.title}
                   imagePath={movie?.poster_path}
                 />

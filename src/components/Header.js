@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../utils/firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { USER_AVATAR } from "../utils/constant";
 import { toggleGptSearch } from "../utils/redux/gptSlice";
 import { langConstant, languageOption } from "../utils/strings";
@@ -10,6 +10,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const lang = useSelector((store) => store.config.lang);
   const user = useSelector((store) => store.user);
+  const navigate = useNavigate();
   const onSignOutClick = () => {
     signOut(auth)
       .then(() => {})
@@ -18,6 +19,7 @@ const Header = () => {
   const isGptSearch = useSelector((store) => store.gptSearch?.gptSearch);
   const handleToggleGptSearch = () => {
     dispatch(toggleGptSearch());
+    !isGptSearch ? navigate("/search") : navigate("/browse");
   };
 
   const onlanguagechange = (e) => {

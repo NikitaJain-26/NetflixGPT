@@ -4,6 +4,8 @@ import Login from "./components/Login";
 import Browse from "./components/Browse";
 import { Provider } from "react-redux";
 import appStore from "./utils/redux/appStore";
+import MovieDetails from "./components/MovieDetails";
+import GPTSearch from "./components/GPTSearch";
 function App() {
   return (
     <Provider store={appStore}>
@@ -24,6 +26,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/browse",
         element: <Browse />,
+      },
+      {
+        path: "/movie/:id",
+        element: <MovieDetails />,
+      },
+      {
+        path: "/search",
+        element: <GPTSearch />,
       },
     ],
   },

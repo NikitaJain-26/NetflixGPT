@@ -34,3 +34,5 @@ export const gptQuery =
   "Act as Movie recommendation system and suggest some movies for the query : ";
 export const gptExample =
   "only give me names of 5 movies, comma seperated. like the example resukt ahead. Example Result: Gadar, Fukrey, Golmaal, Hera pheri, OMG";
+
+export const MOVIE_DETAILS_API = "https://api.themoviedb.org/3/movie/";
